@@ -1,0 +1,110 @@
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.navList li {
+  margin: 0 15px;
+}
+
+.navList li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  background-color: #007bff;
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin: 10px 0 20px;
+}
+
+.ctaButton {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.ctaButton:hover {
+  background-color: #218838;
+}
+
+.infoSection {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.infoSection h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.infoSection p {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.infoSection ul {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+}
+
+ul.comparisonList {
+  list-style: circle !important;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.comparisonList li {
+  margin: 10px 0;
+}
+
+.comparisonList li a {
+  font-size: 18px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.comparisonList li a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}

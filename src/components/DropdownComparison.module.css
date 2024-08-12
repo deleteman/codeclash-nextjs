@@ -1,0 +1,44 @@
+.comparisonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Space between dropdowns and button */
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .dropdown {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 200px;
+    cursor: pointer;
+  }
+  
+  .dropdown:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+  }
+  
+  .compareButton {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #0070f3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .compareButton:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+  
+  .compareButton:hover:not(:disabled) {
+    background-color: #005bb5;
+  }
+  
