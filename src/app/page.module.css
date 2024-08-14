@@ -1,6 +1,6 @@
 
 .header {
-  background-color: #333;
+  background-color: #0c1529;
   color: #fff;
   padding: 10px 0;
   text-align: center;
@@ -10,6 +10,16 @@
   margin: 0;
   font-size: 24px;
 }
+
+.logo img {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.logo {
+  background-color: #0c1529;
+}
+
 
 .navList {
   list-style: none;

@@ -15,7 +15,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <header className={styles.header}>
           <div className={styles.logo}>
-            <h1><a href="/">CodeClash</a></h1>
+            <h1><a href="/">
+              <img src="/logo.png" alt="CodeClash"/>
+              </a></h1>
           </div>
           <nav>
             <ul className={styles.navList}>
