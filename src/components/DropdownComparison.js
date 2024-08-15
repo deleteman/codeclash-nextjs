@@ -32,7 +32,6 @@ export default function DropdownComparison({ languages, allComparisons }) {
           // Swap the values if the inverse exists
           setSecondLanguage(firstLanguage)
           setSecondLanguage(firstLanguage)
-          //[setFirstLanguage, setSecondLanguage] = [setSecondLanguage, setFirstLanguage];
         } else {
           alert('Comparison not found.');
           return;

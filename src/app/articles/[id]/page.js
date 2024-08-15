@@ -30,7 +30,7 @@ export default async function ComparisonPage({ params }) {
                     {typeof comparisonData.contentHtml === 'string' ? (
                         <div dangerouslySetInnerHTML={{ __html: comparisonData.contentHtml }} />
                     ) : (
-                        <MDXContent source={comparisonData.contentHtml} />
+                        <MDXContent source={comparisonData.contentHtml}  comparisons={getAllComparisonIds()}/>
                     )}
                 </div>
             </main>

@@ -1,0 +1,40 @@
+.relatedComparisonsContainer {
+    margin-top: 40px;
+  }
+  
+  .relatedComparisonsContainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .comparisonsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .comparisonBox {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .comparisonBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .comparisonBox h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .comparisonBox p {
+    font-size: 14px;
+    color: #666;
+  }
+  
