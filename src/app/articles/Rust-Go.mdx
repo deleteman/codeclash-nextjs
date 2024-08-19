@@ -100,6 +100,35 @@ func main() {
 
 - **Modern Language Features**: Both languages were designed with modern programming challenges in mind, including concurrency, safety, and performance. They provide strong standard libraries and tooling to support efficient development.
 
+
+## Pros
+### Rust
+- Memory safety without a garbage collector (ownership system)
+- Strong support for concurrency with "fearless concurrency"
+- High performance, comparable to C and C++
+- Modern syntax with built-in tooling (Cargo)
+- Prevents common programming errors like null pointer dereferencing and data races
+
+### Go
+- Simplicity and ease of use with a shallow learning curve
+- Built-in support for concurrency with goroutines and channels
+- Fast compile times and efficient garbage collection
+- Excellent for building scalable web servers and cloud applications
+- Backed by Google with a strong community and ecosystem
+
+## Cons
+### Rust
+- Steeper learning curve due to ownership and borrowing concepts
+- Slower compile times compared to Go
+- Smaller ecosystem compared to Go
+- Still relatively new, with less mature tooling
+
+### Go
+- Less control over memory management compared to Rust
+- Lacks some modern language features found in Rust
+- Garbage collection can introduce latency in performance-critical applications
+- Less suitable for low-level system programming compared to Rust
+
 ## Conclusion
 
 Rust and Go are both modern, powerful languages, each with its own strengths and ideal use cases. Rust is the go-to choice for system-level programming and applications where safety and performance are critical. Its powerful features and memory safety guarantees come at the cost of a steeper learning curve. Go, on the other hand, is designed for simplicity and speed, making it an excellent choice for web services, cloud applications, and large-scale distributed systems.
