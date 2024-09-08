@@ -118,3 +118,12 @@ ul.comparisonList {
   text-align: center;
   padding: 10px 0;
 }
+
+
+.pageComparisonsGrid {
+    margin: 0 auto;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }

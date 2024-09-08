@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
 import styles from './RelatedComparisons.module.css'; // Add CSS for styling
+import ComparisonBox from './ComparisonBox';
 
 let comparisons = null;
 const RelatedComparisons = ({ currentLanguages }) => {
@@ -20,12 +20,7 @@ const RelatedComparisons = ({ currentLanguages }) => {
       <h2>Keep comparing...</h2>
       <div className={styles.comparisonsGrid}>
         {filteredComparisons.map((comp) => (
-          <Link href={`/articles/${comp.params.id}`} key={comp.params.id}>
-            <div className={styles.comparisonBox}>
-              <h3>{comp.title}</h3>
-              <p>Compare {comp.params.id.replace("-", ' vs ')}</p>
-            </div>
-          </Link>
+          <ComparisonBox key={comp.params.id} comp={comp} />
         ))}
       </div>
     </div>

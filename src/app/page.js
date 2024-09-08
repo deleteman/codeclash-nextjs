@@ -1,6 +1,7 @@
 import { getAllComparisonIds } from '../lib/utils';
 import DropdownComparison from '@/components/DropdownComparison';
 import styles from './page.module.css';
+import ComparisonBox from '@/components/ComparisonBox';
 
 export default async function Home() {
   const allComparisons = getAllComparisonIds();
@@ -28,6 +29,16 @@ export default async function Home() {
         {/* Client Component */}
         <DropdownComparison languages={languages} allComparisons={allComparisons} />
       </section>
+
+      <section id="most-common" className={styles.infoSection}>
+        <h3>Most common questions</h3>
+        <div className={styles.pageComparisonsGrid}>
+          <ComparisonBox comp={{ title: 'React vs Angular', params: { id: 'react-angular' } }} />
+          <ComparisonBox comp={{ title: 'JAVA vs JavaScript', params: { id: 'java-javascript' } }} />
+          <ComparisonBox comp={{ title: 'React vs Vue', params: { id: 'react-vue' } }} />
+          </div>
+      </section>
+
 
    </div>
   );
