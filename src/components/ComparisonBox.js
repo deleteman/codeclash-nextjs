@@ -11,11 +11,13 @@ import Link from 'next/link';
  */
 export default function ComparisonBox({ comp }) {
 
+    let title = comp.title || comp.params.id.replace('-', ' vs ')
+    let url = title.replace(' vs ', '-')
     return (
-        <Link href={`/articles/${comp.params.id}`} key={comp.params.id}>
+        <Link href={`/articles/${url}`} key={comp.params.id}>
         <div className={styles.comparisonBox}>
             <h3>{comp.title}</h3>
-            <p>Compare {comp.params.id.replace("-", ' vs ')}</p>
+            <p>Compare {title}</p>
         </div>
         </Link>
     )
