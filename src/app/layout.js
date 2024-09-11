@@ -4,9 +4,31 @@ import styles from './page.module.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
+const TITLE = "CodeClash: Compare Programming Languages & Frameworks";
+const DESCR = "Find the Best Technology for Your Next Project, start comparing programming languages & frameworks side by side and make informed decisions with CodeClash.";
 export const metadata = {
-  title: "CodeClash",
-  description: "Find the Best Technology for Your Next Project",
+  title: TITLE,
+  description: DESCR,
+  alternates: {
+    canonical:  "./"
+  },
+  metadataBase:  "https://code-clash.net/",
+  openGraph: {
+    title: TITLE,
+    description: DESCR,
+    url: 'https://code-clash.net/',
+    siteName: TITLE,
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        secureUrl: 'https://www.code-clash.net/og-image.png',
+        width: 1500,
+        height: 500,
+        alt: 'CodeClash: Compare Programming Languages & Frameworks',
+      }
+    ]
+  },
 };
 
 export default function RootLayout({ children }) {
