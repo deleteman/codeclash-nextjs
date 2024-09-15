@@ -1,6 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import styles from './page.module.css';
+import fs from 'fs';
+import path from 'path';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +34,18 @@ export const metadata = {
   },
 };
 
+// Function to get stack names from the stacks folder
+const getStackNames = () => {
+  const stacksDirectory = path.join(process.cwd(), 'src/app/stacks');
+  const fileNames = fs.readdirSync(stacksDirectory);
+  return fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => fileName.replace(/\.mdx$/, ''));
+};
+
 export default function RootLayout({ children }) {
+  const stacks = getStackNames();
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -47,6 +61,18 @@ export default function RootLayout({ children }) {
               <li><a href="/#comparison">Start Comparing</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="/contact">Contact</a></li>
+              <li>
+                <div className={styles.subMenu}>
+                  <a href="#">Stacks</a>
+                  <ul className={styles.dropdownMenu}>
+                    {stacks.map((stack) => (
+                      <li key={stack}>
+                        <Link href={`/stacks/${stack}`}>{stack}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
             </ul>
           </nav>
         </header>

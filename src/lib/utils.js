@@ -8,6 +8,18 @@ import rehypeHighlight from 'rehype-highlight';
 
 
 const articlesDirectory = path.join(process.cwd(), 'src/app/articles');
+const stacksDirectory = path.join(process.cwd(), 'src/app/stacks');
+
+export function getAllStacks() {
+    const fileNames = fs.readdirSync(stacksDirectory);
+    return fileNames.filter(fname => /\.(md|mdx)$/.test(fname)).map(fileName => {
+        return {
+            params: {
+                code: fileName.replace(/\.(md|mdx)$/, '')
+            }
+        };
+    });
+}
 
 export function getAllComparisonIds() {
     const fileNames = fs.readdirSync(articlesDirectory);
@@ -31,10 +43,15 @@ export function getComparisonData(id) {
     };
 }
 
-export async function getComparisonContent(id) {
+export async function getComparisonContent(id, type="articles") {
     id = decodeURIComponent(id)
-    const mdPath = path.join(articlesDirectory, `${id}.md`);
-    const mdxPath = path.join(articlesDirectory, `${id}.mdx`);
+    const folderMapping = {
+        "articles": articlesDirectory,
+        "stacks": stacksDirectory
+    }
+
+    const mdPath = path.join(folderMapping[type], `${id}.md`);
+    const mdxPath = path.join(folderMapping[type], `${id}.mdx`);
     
     let fullPath;
     if (fs.existsSync(mdPath)) {
