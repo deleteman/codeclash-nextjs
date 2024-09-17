@@ -7,6 +7,12 @@
 
 .container a {
     color: blue;
+    text-decoration: underline;
+}
+
+.container a:hover {
+    text-decoration: none;
+    color: #3a5193;
 }
 
 .header {
@@ -49,7 +55,7 @@
     font-size: 30px;
 }
 .content h3 {
-    color: #0070f3;
+    color: #0051b0;
     margin-top: 30px;
     font-size: 20px;
 }

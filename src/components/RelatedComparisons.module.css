@@ -12,5 +12,10 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
   }
+
+  .comparisonsGrid a {
+    text-decoration: none;
+    color: #0070f3;
+  }
   
   
