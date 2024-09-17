@@ -59,8 +59,6 @@ export default function RootLayout({ children }) {
             <ul className={styles.navList}>
               <li><a href="/">Home</a></li>
               <li><a href="/#comparison">Start Comparing</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
               <li>
                 <div className={styles.subMenu}>
                   <a href="#">Stacks</a>
@@ -73,13 +71,18 @@ export default function RootLayout({ children }) {
                   </ul>
                 </div>
               </li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
             </ul>
           </nav>
         </header>
           {children}
-        <footer className={styles.footer}>
-          <p>&copy; 2024 CodeClash. All rights reserved.</p>
-        </footer>
+          <footer className={styles.footer}>
+            <p>&copy; 2024 CodeClash. All rights reserved.</p>
+            <p>
+              Follow us on <a href="https://twitter.com/intent/follow?screen_name=CodeClashDev" target="_blank" rel="noopener noreferrer" className={styles.social}>Twitter</a>
+            </p>
+          </footer>
         <script defer event-uuid="aa9b5b55-323b-4d52-9f67-18a9ee1877e8" src="https://tracker.metricswave.com/js/visits.js"></script>
   
         </body>

@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <div>
       <section className={styles.hero}>
-        <h2>Find the Best Technology for Your Next Project</h2>
+        <h2>Find the <span className={styles.highlight}>Best Technology</span> for Your Next Project</h2>
         <p>Compare programming languages & frameworks side by side and make informed decisions with CodeClash.</p>
         <a href="#comparison" className={styles.ctaButton}>Start Comparing</a>
       </section>

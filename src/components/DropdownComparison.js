@@ -52,7 +52,7 @@ export default function DropdownComparison({ languages, allComparisons }) {
         }}
         className={styles.dropdown}
       >
-        <option value="" disabled>Select first language</option>
+        <option value="" disabled>Select first technology</option>
         {languages.map((language) => (
           <option key={language} value={language}>{language}</option>
         ))}
@@ -64,7 +64,7 @@ export default function DropdownComparison({ languages, allComparisons }) {
         className={styles.dropdown}
         disabled={!firstLanguage}
       >
-        <option value="" disabled>Select second language</option>
+        <option value="" disabled>Select second technology</option>
         {availableSecondLanguages.map((language) => (
           <option key={language} value={language}>{language}</option>
         ))}
