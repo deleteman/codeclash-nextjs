@@ -6,6 +6,7 @@ import html from 'remark-html';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeHighlight from 'rehype-highlight';
 
+export const WEBSITE_TITLE = "CodeClash: Compare Programming Languages & Frameworks";
 
 const articlesDirectory = path.join(process.cwd(), 'src/app/articles');
 const stacksDirectory = path.join(process.cwd(), 'src/app/stacks');

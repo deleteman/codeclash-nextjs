@@ -4,11 +4,13 @@ import styles from './page.module.css';
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import { WEBSITE_TITLE } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const TITLE = "CodeClash: Compare Programming Languages & Frameworks";
+const TITLE = WEBSITE_TITLE;
 const DESCR = "Find the Best Technology for Your Next Project, start comparing programming languages & frameworks side by side and make informed decisions with CodeClash.";
+
 export const metadata = {
   title: TITLE,
   description: DESCR,
