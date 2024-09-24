@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import remarkGfm from 'remark-gfm';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeHighlight from 'rehype-highlight';
 
@@ -10,6 +11,7 @@ export const WEBSITE_TITLE = "CodeClash: Compare Programming Languages & Framewo
 
 const articlesDirectory = path.join(process.cwd(), 'src/app/articles');
 const stacksDirectory = path.join(process.cwd(), 'src/app/stacks');
+const paradigmsDirectory = path.join(process.cwd(), 'src/app/paradigms');
 
 export function getAllStacks() {
     const fileNames = fs.readdirSync(stacksDirectory);
@@ -45,10 +47,12 @@ export function getComparisonData(id) {
 }
 
 export async function getComparisonContent(id, type="articles") {
-    id = decodeURIComponent(id)
+    id = decodeURIComponent(id).replace("[-]", "#");
+    console.log("looking for: ", id)
     const folderMapping = {
         "articles": articlesDirectory,
-        "stacks": stacksDirectory
+        "stacks": stacksDirectory,
+        "paradigms": paradigmsDirectory
     }
 
     const mdPath = path.join(folderMapping[type], `${id}.md`);
@@ -77,6 +81,7 @@ export async function getComparisonContent(id, type="articles") {
         // For MDX files
         const mdxSource = await serialize(matterResult.content, {
             mdxOptions: {
+                remarkPlugins: [remarkGfm],
                 rehypePlugins: [rehypeHighlight] // Add syntax highlighting for MDX
             }
         });

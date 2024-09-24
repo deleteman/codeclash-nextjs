@@ -31,3 +31,24 @@ body {
     text-wrap: balance;
   }
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.paradigm-name {
+  /* all caps*/
+  text-transform: uppercase;
+}

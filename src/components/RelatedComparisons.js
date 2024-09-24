@@ -3,12 +3,12 @@ import styles from './RelatedComparisons.module.css'; // Add CSS for styling
 import ComparisonBox from './ComparisonBox';
 
 let comparisons = null;
-const RelatedComparisons = ({ currentLanguages }) => {
-    currentLanguages = currentLanguages.split("-")
+const RelatedComparisons = ({ currentTechnology }) => {
+    currentTechnology = currentTechnology.split("-")
   const filteredComparisons = comparisons.filter(
     (comp) =>
-      comp.params.id.split("-").some((lang) => currentLanguages.includes(lang)) &&
-      !currentLanguages.every((lang) => comp.params.id.split("-").includes(lang))
+      comp.params.id.split("-").some((lang) => currentTechnology.includes(lang)) &&
+      !currentTechnology.every((lang) => comp.params.id.split("-").includes(lang))
   );
 
   if (filteredComparisons.length === 0) {

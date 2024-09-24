@@ -9,15 +9,13 @@ import Link from 'next/link';
  *  params: { id: 'python-javascript' }
  * }
  */
-export default function ComparisonBox({ comp }) {
+export default function LinkBox({ title, type = "stacks" }) {
 
-    let title = comp.title || comp.params.id.replace('-', ' vs ')
     let url = encodeURI(title.replace(' vs ', '-').replace("#", "[-]"))
     return (
-        <Link href={`/articles/${url}`} key={comp.params.id}>
+        <Link href={`/${type}/${url}`} >
         <div className={styles.comparisonBox}>
-            <h3>{comp.title}</h3>
-            <p>Compare {title}</p>
+            <h3>{title}</h3>
         </div>
         </Link>
     )

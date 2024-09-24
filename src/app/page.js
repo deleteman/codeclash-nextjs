@@ -2,6 +2,7 @@ import { getAllComparisonIds } from '../lib/utils';
 import DropdownComparison from '@/components/DropdownComparison';
 import styles from './page.module.css';
 import ComparisonBox from '@/components/ComparisonBox';
+import LinkBox from '@/components/LinkBox';
 
 export default async function Home() {
   const allComparisons = getAllComparisonIds();
@@ -31,13 +32,39 @@ export default async function Home() {
       </section>
 
       <section id="most-common" className={styles.infoSection}>
-        <h3>Most common questions</h3>
+        <h3>Most common language comparisons</h3>
+        <div className={styles.pageComparisonsGrid}>
+          <ComparisonBox comp={{ title: 'PHP vs Python', params: { id: 'php-python' } }} />
+          <ComparisonBox comp={{ title: 'JAVA vs JavaScript', params: { id: 'java-javascript' } }} />
+          <ComparisonBox comp={{ title: 'Haskell vs Scala', params: { id: 'haskell-scala' } }} />
+          </div>
+      </section>
+
+      <section id="most-common" className={styles.infoSection}>
+        <h3>Most common frameworks</h3>
         <div className={styles.pageComparisonsGrid}>
           <ComparisonBox comp={{ title: 'React vs Angular', params: { id: 'react-angular' } }} />
-          <ComparisonBox comp={{ title: 'JAVA vs JavaScript', params: { id: 'java-javascript' } }} />
           <ComparisonBox comp={{ title: 'React vs Vue', params: { id: 'react-vue' } }} />
           </div>
       </section>
+      <section id="most-common" className={styles.infoSection}>
+        <h3>Most common tech stacks</h3>
+        <div className={styles.pageComparisonsGrid}>
+          <LinkBox title={'MERN'} />
+          <LinkBox title={'DJANGO'} />
+          <LinkBox title={'MEVN'} />
+          </div>
+      </section>
+     <section id="most-common" className={styles.infoSection}>
+        <h3>Most common programming paradigms</h3>
+        <div className={styles.pageComparisonsGrid}>
+          <LinkBox title={'Functional'} type='paradigms'/>
+          <LinkBox title={'OOP'} type='paradigms'/>
+        </div>
+      </section>
+
+
+
 
 
    </div>

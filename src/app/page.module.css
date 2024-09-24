@@ -138,12 +138,28 @@ ul.comparisonList {
 
 
 .pageComparisonsGrid {
-    margin: 0 auto;
-    max-width: 800px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-items: stretch;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
   }
+
+.pageComparisonsGrid a {
+  display: block;
+  min-width: 240px;
+}
+.pageComparisonsGrid div {
+  transition-duration: 500ms;
+  transition-property: background-color;
+}
+.pageComparisonsGrid div:hover {
+  background-color: #89d6f2;
+  color: white;
+}
 
   .navList {
     list-style: none;

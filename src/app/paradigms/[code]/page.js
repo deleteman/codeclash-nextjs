@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 const MDXContent = dynamic(() => import('./MDXContent'), { ssr: false });
 
 export async function generateMetadata({params}) {
-    const comparisonData = await getComparisonContent(params.code, "stacks");
+    const comparisonData = await getComparisonContent(params.code, "paradigms");
     return {
         title: "CodeClash: " + comparisonData.title,
         description: comparisonData.description,
@@ -40,7 +40,7 @@ export async function generateMetadata({params}) {
 }
 
 export default async function ComparisonPage({ params }) {
-    const comparisonData = await getComparisonContent(params.code, "stacks");
+    const comparisonData = await getComparisonContent(params.code, "paradigms");
 
     return (
         <div className={styles.container}>

@@ -45,8 +45,17 @@ const getStackNames = () => {
     .map((fileName) => fileName.replace(/\.mdx$/, ''));
 };
 
+const getParadigmNames = () => {
+  const stacksDirectory = path.join(process.cwd(), 'src/app/paradigms');
+  const fileNames = fs.readdirSync(stacksDirectory);
+  return fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => fileName.replace(/\.mdx$/, ''));
+};
+
 export default function RootLayout({ children }) {
   const stacks = getStackNames();
+  const paradigms = getParadigmNames();
 
   return (
     <html lang="en">
@@ -61,6 +70,19 @@ export default function RootLayout({ children }) {
             <ul className={styles.navList}>
               <li><a href="/">Home</a></li>
               <li><a href="/#comparison">Start Comparing</a></li>
+              <li>
+                <div className={styles.subMenu}>
+                  <a href="#">Paradigms</a>
+                  <ul className={styles.dropdownMenu}>
+                    {paradigms.map((paradigm) => (
+                      <li key={paradigm} className="paradigm-name">
+                        <Link href={`/paradigms/${paradigm}`}>{paradigm}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+
               <li>
                 <div className={styles.subMenu}>
                   <a href="#">Stacks</a>
