@@ -24,6 +24,17 @@ export function getAllStacks() {
     });
 }
 
+export function getAllParadigms() {
+    const fileNames = fs.readdirSync(paradigmsDirectory);
+    return fileNames.filter(fname => /\.(md|mdx)$/.test(fname)).map(fileName => {
+        return {
+            params: {
+                code: fileName.replace(/\.(md|mdx)$/, '')
+            }
+        };
+    });
+}
+
 export function getAllComparisonIds() {
     const fileNames = fs.readdirSync(articlesDirectory);
     return fileNames.filter(fname => /\.(md|mdx)$/.test(fname)).map(fileName => {
@@ -48,7 +59,6 @@ export function getComparisonData(id) {
 
 export async function getComparisonContent(id, type="articles") {
     id = decodeURIComponent(id).replace("[-]", "#");
-    console.log("looking for: ", id)
     const folderMapping = {
         "articles": articlesDirectory,
         "stacks": stacksDirectory,

@@ -1,5 +1,5 @@
 import styles from './comparison.module.css';
-import { getAllStacks, getAllComparisonIds, getComparisonContent, WEBSITE_TITLE } from '@/lib/utils';
+import { getAllParadigms, getAllComparisonIds, getComparisonContent, WEBSITE_TITLE } from '@/lib/utils';
 import { formatDate } from '@/lib/date';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -7,7 +7,7 @@ import 'highlight.js/styles/github.css'; // Or any other highlight.js theme
 
 
 export async function generateStaticParams() {
-    const paths = await getAllStacks();
+    const paths = await getAllParadigms();
     return paths.map((path) => ({
         code: path.params.code,
     }));
