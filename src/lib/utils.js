@@ -18,7 +18,8 @@ export function getAllStacks() {
     return fileNames.filter(fname => /\.(md|mdx)$/.test(fname)).map(fileName => {
         return {
             params: {
-                code: fileName.replace(/\.(md|mdx)$/, '')
+                code: fileName.replace(/\.(md|mdx)$/, ''),
+                type: "stack"
             }
         };
     });
@@ -29,7 +30,8 @@ export function getAllParadigms() {
     return fileNames.filter(fname => /\.(md|mdx)$/.test(fname)).map(fileName => {
         return {
             params: {
-                code: fileName.replace(/\.(md|mdx)$/, '')
+                code: fileName.replace(/\.(md|mdx)$/, ''),
+                type: 'paradigm'
             }
         };
     });
@@ -40,7 +42,8 @@ export function getAllComparisonIds() {
     return fileNames.filter(fname => /\.(md|mdx)$/.test(fname)).map(fileName => {
         return {
             params: {
-                id: fileName.replace(/\.(md|mdx)$/, '')
+                id: fileName.replace(/\.(md|mdx)$/, ''),
+                type: "article"
             }
         };
     });
