@@ -1,4 +1,4 @@
-import { getAllComparisonIds, getAllStacks, getAllParadigms } from "@/lib/utils";
+import { getAllGuides, getAllComparisonIds, getAllStacks, getAllParadigms } from "@/lib/utils";
 
 const HOST = "https://www.code-clash.net"
 
@@ -14,12 +14,16 @@ function getSubfolder(comp) {
        case 'paradigm': {
         return 'paradigms';
        }
+       case 'guides': {
+        return 'guides';
+       }
        default: return 'articles';
     }
 }
 
+
 export default async function Sitemap() {
-    const data = [...getAllComparisonIds(), ...getAllStacks(), ...getAllParadigms()]
+    const data = [...getAllComparisonIds(), ...getAllStacks(), ...getAllParadigms(), ...getAllGuides()]
     return data.map(comp => {
         const subfolder = getSubfolder(comp.params)
         return {

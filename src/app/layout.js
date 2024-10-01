@@ -4,7 +4,7 @@ import styles from './page.module.css';
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-import { WEBSITE_TITLE } from "@/lib/utils";
+import { WEBSITE_TITLE, getComparisonContent, getFrontMatterData } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -53,9 +53,21 @@ const getParadigmNames = () => {
     .map((fileName) => fileName.replace(/\.mdx$/, ''));
 };
 
-export default function RootLayout({ children }) {
+const getGuidesNames = async () => {
+  const folder = path.join(process.cwd(), 'src/app/guides');
+  const fileNames = fs.readdirSync(folder);
+  return fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => {
+      let data = getFrontMatterData(fs.readFileSync(path.join(folder, fileName), 'utf-8'));
+      data.data.shortTitle = data.data.title.replace("Best Frameworks for", "...", "i"); 
+      return {...data.data, id: fileName.replace(/\.mdx$/, '')};
+    });
+};
+export default async function RootLayout({ children }) {
   const stacks = getStackNames();
   const paradigms = getParadigmNames();
+  const guides = await getGuidesNames();
 
   return (
     <html lang="en">
@@ -70,6 +82,20 @@ export default function RootLayout({ children }) {
             <ul className={styles.navList}>
               <li><a href="/">Home</a></li>
               <li><a href="/#comparison">Start Comparing</a></li>
+              <li>
+                <div className={styles.subMenu}>
+                  <a href="#">Best frameworks for...</a>
+                  <ul className={styles.dropdownMenu}>
+                  {guides.map((guide) => (
+                  <li key={guide.id} className="paradigm-name">
+                        <Link href={`/guides/${guide.id}`}>{guide.shortTitle}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+
+
               <li>
                 <div className={styles.subMenu}>
                   <a href="#">Paradigms</a>

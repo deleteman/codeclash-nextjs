@@ -12,6 +12,7 @@ export const WEBSITE_TITLE = "CodeClash: Compare Programming Languages & Framewo
 const articlesDirectory = path.join(process.cwd(), 'src/app/articles');
 const stacksDirectory = path.join(process.cwd(), 'src/app/stacks');
 const paradigmsDirectory = path.join(process.cwd(), 'src/app/paradigms');
+const guidesDirectory = path.join(process.cwd(), 'src/app/guides');
 
 export function getAllStacks() {
     const fileNames = fs.readdirSync(stacksDirectory);
@@ -25,6 +26,17 @@ export function getAllStacks() {
     });
 }
 
+export function getAllGuides() {
+    const fileNames = fs.readdirSync(guidesDirectory);
+    return fileNames.filter(fname => /\.(md|mdx)$/.test(fname)).map(fileName => {
+        return {
+            params: {
+                code: fileName.replace(/\.(md|mdx)$/, ''),
+                type: 'guides'
+            }
+        };
+    });
+}
 export function getAllParadigms() {
     const fileNames = fs.readdirSync(paradigmsDirectory);
     return fileNames.filter(fname => /\.(md|mdx)$/.test(fname)).map(fileName => {
@@ -49,6 +61,11 @@ export function getAllComparisonIds() {
     });
 }
 
+
+export function getFrontMatterData(data) {
+    return matter(data);
+}
+
 export function getComparisonData(id) {
     const fullPath = path.join(articlesDirectory, `${id}.md`) || path.join(articlesDirectory, `${id}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -65,7 +82,8 @@ export async function getComparisonContent(id, type="articles") {
     const folderMapping = {
         "articles": articlesDirectory,
         "stacks": stacksDirectory,
-        "paradigms": paradigmsDirectory
+        "paradigms": paradigmsDirectory,
+        "guides": guidesDirectory
     }
 
     const mdPath = path.join(folderMapping[type], `${id}.md`);
