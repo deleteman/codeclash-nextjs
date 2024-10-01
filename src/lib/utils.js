@@ -77,15 +77,13 @@ export function getComparisonData(id) {
     };
 }
 
-export async function getComparisonContent(id, type="articles") {
-    id = decodeURIComponent(id).replace("[-]", "#");
-    const folderMapping = {
+async function readFile(id, type) {
+     const folderMapping = {
         "articles": articlesDirectory,
         "stacks": stacksDirectory,
         "paradigms": paradigmsDirectory,
         "guides": guidesDirectory
     }
-
     const mdPath = path.join(folderMapping[type], `${id}.md`);
     const mdxPath = path.join(folderMapping[type], `${id}.mdx`);
     
@@ -95,13 +93,13 @@ export async function getComparisonContent(id, type="articles") {
     } else if (fs.existsSync(mdxPath)) {
         fullPath = mdxPath;
     } else {
-        throw new Error(`File not found: ${mdPath} - ${mdxPath}`);
+        //throw new Error(`File not found: ${mdPath} - ${mdxPath}`);
+        return [false, false];
     }
-
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
+   const matterResult = matter(fileContents);
+   let contentHtml = "";
 
-    let contentHtml;
     if (path.extname(fullPath) === '.md') {
         const processedContent = await remark()
             .use(html)
@@ -118,10 +116,29 @@ export async function getComparisonContent(id, type="articles") {
         });
         contentHtml = mdxSource;
     }
+    return [contentHtml, matterResult]
+}
 
-    return {
-        id,
-        ...matterResult.data,
-        contentHtml
-    };
+export async function getComparisonContent(id, type="articles") {
+    id = decodeURIComponent(id).replace("[-]", "#");
+   
+    try {
+        let [contentHtml, matterResult] = await readFile(id, type);
+        if(!contentHtml) {
+            console.log("File not found: ", id, "trying the opposite");
+            id = id.split("-").reverse().join("-");
+            [contentHtml, matterResult] = await readFile(id, type) 
+        }
+        if(!contentHtml) {
+            throw new Error("File not found:", id)
+        }
+        return {
+                id,
+                ...matterResult?.data,
+                contentHtml
+            };
+    } catch (error) {
+        console.log(error);
+    }
+    return null
 }
