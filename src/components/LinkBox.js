@@ -12,6 +12,9 @@ import Link from 'next/link';
 export default function LinkBox({ title, type = "stacks" }) {
 
     let url = encodeURI(title.replace(' vs ', '-').replace("#", "[-]"))
+    if(type == "paradigms") {
+        url = url.toLowerCase();
+    }
     return (
         <Link href={`/${type}/${url}`} >
         <div className={styles.comparisonBox}>
