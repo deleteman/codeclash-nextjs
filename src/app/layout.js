@@ -74,9 +74,9 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         <header className={styles.header}>
           <div className={styles.logo}>
-            <h1><a href="/">
+            <a href="/">
               <img src="/logo.png" alt="CodeClash"/>
-              </a></h1>
+              </a>
           </div>
           <nav>
             <ul className={styles.navList}>

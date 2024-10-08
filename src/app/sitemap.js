@@ -2,6 +2,10 @@ import { getAllGuides, getAllComparisonIds, getAllStacks, getAllParadigms } from
 
 const HOST = "https://www.code-clash.net"
 
+function sanitize(str) {
+    return str.replace("#", "[-]") 
+}
+
 function getSubfolder(comp) {
     console.log(comp)
     switch(comp.type) {
@@ -27,7 +31,7 @@ export default async function Sitemap() {
     return data.map(comp => {
         const subfolder = getSubfolder(comp.params)
         return {
-            url: HOST + `/${subfolder}/` + (comp.params.id || comp.params.code),
+            url: HOST + `/${subfolder}/` + sanitize(comp.params.id || comp.params.code),
             changeFrequency: 'daily',
             priority: 1
         }
