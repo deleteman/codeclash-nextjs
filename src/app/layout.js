@@ -17,11 +17,11 @@ export const metadata = {
   alternates: {
     canonical:  "./"
   },
-  metadataBase:  "https://code-clash.net/",
+  metadataBase:  "https://www.code-clash.net/",
   openGraph: {
     title: TITLE,
     description: DESCR,
-    url: 'https://code-clash.net/',
+    url: 'https://www.code-clash.net/',
     siteName: TITLE,
     type: 'website',
     images: [

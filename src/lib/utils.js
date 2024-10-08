@@ -126,8 +126,10 @@ export async function getComparisonContent(id, type="articles") {
         let [contentHtml, matterResult] = await readFile(id, type);
         if(!contentHtml) {
             console.log("File not found: ", id, "trying the opposite");
-            id = id.split("-").reverse().join("-");
-            [contentHtml, matterResult] = await readFile(id, type) 
+            if(type != "paradigms") {
+                id = id.split("-").reverse().join("-");
+                [contentHtml, matterResult] = await readFile(id, type) 
+            }
         }
         if(!contentHtml) {
             throw new Error("File not found:", id)
