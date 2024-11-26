@@ -22,7 +22,7 @@ export async function generateMetadata({params}) {
         openGraph: {
             title: "CodeClash: " + comparisonData.title,
             description: comparisonData.description,
-            url: 'https://code-clash.net/stacks/' + params.code,
+            url: 'https://www.code-clash.net/stacks/' + params.code,
             siteName: WEBSITE_TITLE,
             type: 'website',
             images: [
